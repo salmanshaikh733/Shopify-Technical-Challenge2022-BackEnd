@@ -1,5 +1,6 @@
 package com.example.shopify_backend_challenge.service;
 
+import com.example.shopify_backend_challenge.exception.InvalidInputException;
 import com.example.shopify_backend_challenge.exception.ResourceNotFoundException;
 import com.example.shopify_backend_challenge.model.Item;
 import com.example.shopify_backend_challenge.repository.ItemRepository;
@@ -38,6 +39,10 @@ public class ItemServiceImplementation implements ItemService {
     @Override
     public Item updateItem(Long id, Item newItemInfo) {
         Item item = getItem(id);
+
+        if(newItemInfo.getPrice() < 0 || newItemInfo.getQuantity() < 0) {
+            throw new InvalidInputException("Invalid price or quantity below zero not possible");
+        }
 
         item.setItemName(newItemInfo.getItemName());
         item.setPrice(newItemInfo.getPrice());
