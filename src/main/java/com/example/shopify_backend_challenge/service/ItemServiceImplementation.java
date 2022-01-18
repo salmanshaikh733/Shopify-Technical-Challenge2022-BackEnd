@@ -24,8 +24,8 @@ public class ItemServiceImplementation implements ItemService {
     }
 
     @Override
-    public void addNewItem(Item item) {
-        itemRepository.save(item);
+    public Item addNewItem(Item item) {
+        return itemRepository.save(item);
     }
 
     @Override
@@ -65,6 +65,7 @@ public class ItemServiceImplementation implements ItemService {
     public Item changeItemQuantity(Long id, boolean operation) {
         Item item = getItem(id);
 
+        //true means increment, while false means decrement
         if (operation) {
             item.setQuantity(item.getQuantity() + 1);
         } else {

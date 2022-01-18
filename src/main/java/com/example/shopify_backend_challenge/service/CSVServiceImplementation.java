@@ -13,7 +13,7 @@ import java.util.List;
 public class CSVServiceImplementation implements CSVService {
 
     @Autowired
-    ItemRepository repository;
+    private ItemRepository repository;
 
     public ByteArrayInputStream loadCsv() {
         List<Item> shopItems = repository.findAll();

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CSVController {
 
     @Autowired
-    CSVServiceImplementation csvService;
+    private CSVServiceImplementation csvService;
 
     @GetMapping("/download-csv")
     public ResponseEntity<Resource> getCSV() {
