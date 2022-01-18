@@ -6,18 +6,18 @@ import java.util.List;
 
 public interface ItemService {
 
-    public List<Item> getAllItems();
+    List<Item> getAllItems();
 
-    public void addNewItem(Item item);
+    void addNewItem(Item item);
 
-    public Item getItem(Long id);
+    Item getItem(Long id);
 
-    public boolean checkIfItemExists(Long id);
+    boolean checkIfItemExists(Long id);
 
-    public Item updateItem(Long id, Item newItemInfo);
+    Item updateItem(Long id, Item newItemInfo);
 
-    public void deleteItem(Item itemId);
+    void deleteItem(Item itemId);
 
-    public Item changeItemQuantity(Long id, boolean operation);
+    Item changeItemQuantity(Long id, boolean operation);
 
 }

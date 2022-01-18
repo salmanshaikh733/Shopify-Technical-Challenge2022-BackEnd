@@ -1,7 +1,7 @@
 package com.example.shopify_backend_challenge.controller;
 
 
-import com.example.shopify_backend_challenge.service.CSVService;
+import com.example.shopify_backend_challenge.service.CSVServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CSVController {
 
     @Autowired
-    CSVService csvService;
+    CSVServiceImplementation csvService;
 
     @GetMapping("/download-csv")
     public ResponseEntity<Resource> getCSV() {
