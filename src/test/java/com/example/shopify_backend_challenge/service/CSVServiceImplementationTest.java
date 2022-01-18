@@ -56,7 +56,8 @@ class CSVServiceImplementationTest {
                 "0,test6,342,36.65\n" +
                 "0,test7,76,343.65";
 
-        String response = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))
+        String response = new BufferedReader
+                (new InputStreamReader(stream, StandardCharsets.UTF_8))
                 .lines()
                 .collect(Collectors.joining("\n"));
 
