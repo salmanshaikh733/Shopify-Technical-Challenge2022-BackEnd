@@ -3,7 +3,6 @@ package com.example.shopify_backend_challenge.controller;
 import com.example.shopify_backend_challenge.exception.ResourceNotFoundException;
 import com.example.shopify_backend_challenge.model.Item;
 import com.example.shopify_backend_challenge.service.ItemService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,20 +46,20 @@ public class ItemController {
 
     @DeleteMapping("/delete-item/{id}")
     public void deleteItem(@PathVariable Long id) {
-        if(itemService.checkIfItemExists(id)) {
+        if (itemService.checkIfItemExists(id)) {
             Item item = itemService.getItem(id);
             itemService.deleteItem(item);
         } else {
-            throw new ResourceNotFoundException("Item failed to be deleted, does not exist with id:" +id);
+            throw new ResourceNotFoundException("Item failed to be deleted, does not exist with id:" + id);
         }
     }
 
-    @PutMapping("/change-item-quantity/{id}")
-    public ResponseEntity<Item> changeQuantity(@PathVariable Long id, @RequestBody Integer newQuantity) {
-        if(itemService.checkIfItemExists(id)) {
-            Item item = itemService.changeItemQuantity(id, newQuantity);
+    @PutMapping("/change-item-quantity/{id}/{operation}")
+    public ResponseEntity<Item> changeQuantity(@PathVariable Long id, @PathVariable boolean operation) {
+        if (itemService.checkIfItemExists(id)) {
+            Item item = itemService.changeItemQuantity(id, operation);
             return ResponseEntity.ok(item);
-        }else {
+        } else {
             throw new ResourceNotFoundException("Cannot update quantity item with id " + id + "not found");
         }
     }

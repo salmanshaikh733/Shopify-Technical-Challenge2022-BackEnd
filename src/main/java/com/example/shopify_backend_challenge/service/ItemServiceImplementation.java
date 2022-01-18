@@ -7,6 +7,7 @@ import com.example.shopify_backend_challenge.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -17,7 +18,9 @@ public class ItemServiceImplementation implements ItemService {
 
     @Override
     public List<Item> getAllItems() {
-        return itemRepository.findAll();
+        List<Item> allItems = itemRepository.findAll();
+        Collections.reverse(allItems);
+        return allItems;
     }
 
     @Override
@@ -40,8 +43,8 @@ public class ItemServiceImplementation implements ItemService {
     public Item updateItem(Long id, Item newItemInfo) {
         Item item = getItem(id);
 
-        if(newItemInfo.getPrice() < 0 || newItemInfo.getQuantity() < 0) {
-            throw new InvalidInputException("Invalid price or quantity below zero not possible");
+        if (newItemInfo.getPrice() < 0 || newItemInfo.getQuantity() < 0 || newItemInfo.getItemName().equals("")) {
+            throw new InvalidInputException("Invalid price,quantity or item name");
         }
 
         item.setItemName(newItemInfo.getItemName());
@@ -59,9 +62,18 @@ public class ItemServiceImplementation implements ItemService {
     }
 
     @Override
-    public Item changeItemQuantity(Long id, int quantity) {
+    public Item changeItemQuantity(Long id, boolean operation) {
         Item item = getItem(id);
-        item.setQuantity(quantity);
+
+        if (operation) {
+            item.setQuantity(item.getQuantity() + 1);
+        } else {
+            if (item.getQuantity() > 0) {
+                item.setQuantity(item.getQuantity() - 1);
+            } else {
+                throw new InvalidInputException("Cannot decrement further than 0 for item with id:" + id);
+            }
+        }
 
         Item updatedItem = itemRepository.save(item);
 

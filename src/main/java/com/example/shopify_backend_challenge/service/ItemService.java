@@ -18,6 +18,6 @@ public interface ItemService {
 
     public void deleteItem(Item itemId);
 
-    public Item changeItemQuantity(Long id, int quantity);
+    public Item changeItemQuantity(Long id, boolean operation);
 
 }
