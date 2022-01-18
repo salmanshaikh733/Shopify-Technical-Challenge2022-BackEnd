@@ -1,19 +1,22 @@
 package com.example.shopify_backend_challenge.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name ="items")
-public class Item {
+@Table(name = "items")
+public class Item implements Serializable {
+
+    private static final long serialVersionUID = 7398151513260624831L;
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column (name = "item_name")
+    @Column(name = "item_name")
     private String itemName;
 
-    @Column (name = "item_quantity")
+    @Column(name = "item_quantity")
     private int quantity;
 
     @Column (name = "item_price")
