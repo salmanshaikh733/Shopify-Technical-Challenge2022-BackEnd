@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @ExtendWith(SpringExtension.class)
@@ -41,7 +41,7 @@ class ItemServiceImplementationTest {
 
         List<Item> result = itemService.getAllItems();
 
-        assertTrue(result.size() == 4);
+        assertEquals(4, result.size());
         assertTrue(result.containsAll(itemsList));
     }
 
@@ -50,9 +50,9 @@ class ItemServiceImplementationTest {
         Item newItem = new Item("itemToAdd", 4, 5.5);
 
         when(itemRepository.save(newItem)).thenReturn(newItem);
-        Item returnedItem = itemService.addNewItem(newItem);
+        itemService.addNewItem(newItem);
 
-        assertEquals(newItem.getItemName(), returnedItem.getItemName());
+        verify(itemRepository, times(1)).save(newItem);
     }
 
     @Test
@@ -95,14 +95,17 @@ class ItemServiceImplementationTest {
 
         Item res = itemService.updateItem(3L, validItemNewInfo);
 
-        assertEquals(validItemNewInfo.getItemName(), res.getItemName());
+        assertEquals("validItem", res.getItemName());
         assertThrows(InvalidInputException.class, () -> itemService.updateItem(4L, invalidItemNewInfo));
     }
 
     @Test
     void deleteItem() {
+        Item deleteMe = new Item();
 
+        itemService.deleteItem(deleteMe);
 
+        verify(itemRepository, times(1)).delete(deleteMe);
     }
 
     @Test

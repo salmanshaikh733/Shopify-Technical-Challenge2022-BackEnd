@@ -8,7 +8,7 @@ public interface ItemService {
 
     List<Item> getAllItems();
 
-    Item addNewItem(Item item);
+    void addNewItem(Item item);
 
     Item getItem(Long id);
 
