@@ -10,7 +10,7 @@ This readme will show you how to get the backend server and MySQL database start
 
 # Database Setup
 
-The backend uses a MySQL server to store all records (Version 8.0.27 , current version is 8.0.28)
+The backend uses a MySQL server to store all records (Version 8.0.27 , current version is 8.0.28 running on port 3306)
 
 First download MySQL from https://dev.mysql.com/downloads/
 
