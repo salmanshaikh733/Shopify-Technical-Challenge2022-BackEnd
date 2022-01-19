@@ -30,8 +30,7 @@ public class ItemServiceImplementation implements ItemService {
 
     @Override
     public Item getItem(Long id) {
-        Item item = itemRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Item Does not exist with id:" + id));
-        return item;
+        return itemRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Item Does not exist with id:" + id));
     }
 
     @Override
@@ -51,9 +50,7 @@ public class ItemServiceImplementation implements ItemService {
         item.setPrice(newItemInfo.getPrice());
         item.setQuantity(newItemInfo.getQuantity());
 
-        Item updatedItem = itemRepository.save(item);
-
-        return updatedItem;
+        return itemRepository.save(item);
     }
 
     @Override
@@ -76,9 +73,7 @@ public class ItemServiceImplementation implements ItemService {
             }
         }
 
-        Item updatedItem = itemRepository.save(item);
-
-        return updatedItem;
+        return itemRepository.save(item);
     }
 
 }
