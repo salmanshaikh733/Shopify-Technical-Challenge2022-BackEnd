@@ -40,8 +40,7 @@ it will ask you for your password you made during installation.
 Once inside run the following query by clicking the yellow lightning symbol
 
 ```sql
-create
-database item_management_system;
+create database item_management_system;
 ```
 
 <img src="readmeImages/Query1.png">
