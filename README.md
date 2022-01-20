@@ -58,6 +58,18 @@ Now that the DB is set up we can move onto the backend.
 The backend server was implemented in the Java 8 Language, using the Spring Boot Framework v2.6.2 The backend server is
 an Apache Tomcat Server running on Port 8080.
 
+To add and use the Java 8 or 1.8, Do the following,
+
+`Ctrl+Alt+Shift+S`
+
+Click the SDK drop down menu, Choose "Add SDK" then click Download JDK
+
+A new window should appear, select from the versions drop down menu version "1.8"
+
+From the vendor drop down choose "Eclipse Temurin (AdoptOpenJDKHotSpot)"
+
+Download this JDK to wherever you want.
+
 IDE used by me was JetBrains Intellij Ultimate Edition however since the ultimate edition is not free, it is possible to
 run just using, Intellij Community
 Edition. [Intellij Community Edition](https://www.jetbrains.com/idea/download/#section=windows)
@@ -70,9 +82,9 @@ Edition. [Intellij Community Edition](https://www.jetbrains.com/idea/download/#s
 
 <img src="readmeImages/Step2.png"> 
 
-Now in the URL section highlighted in red put the GitHub URL to the backend project.
+Now in the URL section highlighted in red put the following GitHub URL to clone the backend project.
 
-* https://github.com/salmanshaikh733/shopify_backend_challenge.git
+* https://github.com/salmanshaikh733/Shopify-Technical-Challenge2022-BackEnd.git
 
 Next hit clone and the project should open, wait for the IDE to index the code and for maven to load the pom.
 
